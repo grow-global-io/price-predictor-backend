@@ -1,9 +1,11 @@
 from flask import Flask, request, jsonify
 import pandas as pd
+from flask_cors import CORS
 import numpy as np
 from sklearn.linear_model import LinearRegression
 
 app = Flask(__name__)
+CORS(app)
 
 sheet_id = '1VUOiDUrvtUge8StvOoPecLe0aV4vU_3gYTQH8OAdphw'
 url = f'https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv'
