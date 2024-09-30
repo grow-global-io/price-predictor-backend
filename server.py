@@ -18,6 +18,7 @@ def predictPrice(locality:str, noOfYears:int):
   action_area_1 = action_area_1.interpolate()
   train_data = action_area_1.dropna()
   train_data.index = train_data.index.astype(int)
+  
   lastYear = int(train_data.index[-1])
   X_train = train_data.index.values.reshape(-1, 1)  # Years
   y_train = train_data.values  # Prices
