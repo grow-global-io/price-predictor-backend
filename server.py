@@ -28,9 +28,10 @@ def predictPrice(locality:str, noOfYears:int):
   # Create a new Series for the predictions
   rangerstr = [str(lastYear + int(i)) for i in range(1, int(noOfYears) + 1)] 
   predictions_series = pd.Series(predictions.flatten(), index=rangerstr)
+  predictions_series = {year: round(value, 2) for year, value in predictions_series.items()}
   # Combine the original data with predictions
   new_data = {'2024': action_area_1[-1]}
-  new_data.update(predictions_series.to_dict())
+  new_data.update(predictions_series)
   return jsonify(new_data), 200
 
 @app.route("/")
